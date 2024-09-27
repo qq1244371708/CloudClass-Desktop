@@ -1,82 +1,31 @@
-> *其他语言版本：[简体中文](README.zh.md)*
+# Create Vanilla JS App 🌴🌴🌴
 
-# Agora Electron Edu Demo QuickStart  
+# A very simple vanilla js boilerplate
 
-## Project Structure
-  * mac permission plist file path: [entitlements](./entitlements)  
-  * core project source code: [src](./src)
-### integrate code 
-[src/renderer/index.js](./src/renderer/index.js)
-### code snippet  
-```javascript
-import {AgoraEduSDK} from 'agora-classroom-sdk'
+- Includes webpack HMR
+- Webpack 4
+- Es6 / Babel
+- Webpack CSS loader / Style loader
 
-AgoraEduSDK.config({
-  // Your Agora AppID
-  appId: "",
-})
+Please keep in mind, This is a helper for me to tinker with ideas and start projects from - I've tried to keep it as clean as possible. Add your own packages to suit your own workflow. The one thing I've ommited is `package-lock.json` generation. But you can add this back in by removing `.npmrc` before running `npm i`
 
-AgoraEduSDK.launch(
-  // valid dom node
-  document.querySelector("#app"), {
-    rtmToken: "", // your valid rtm token
-    userUuid: "", // your rtm uid
-    userName: "1212demo112", // username
-    roomUuid: "12demo112", // roomUuid
-    roleType: 1, // roleType: 1 teacher, 2 student
-    roomType: 0, // roomType 0 1v1, 1 smallClass, 2: bigClass
-    roomName: "demo-app", // room name
-    pretest: true, // recommend open pretest
-   language: "zh", // language "zh"中文 "en" English
-    listener: (evt) => { // callback
-      console.log("evt", evt)
-    }
-  }
-)
-```
+### First
 
-## Run the Electron demo
+Install deps from project root `yarn` or `npm i`
 
-### macOS
-1. Install npm
-   ```
-   npm install
-   ```
-2. Locally run the Electron demo
-   ```
-   npm run dev  
-   ```
-3. Release the Electron demo
-   ```
-   npm run dist:dir
-   ```
-After running, a `release` folder that contains a dmg file will be generated. Open the dmg file and remove it to `Application` to install it.
+### Start development server with:
 
-### Windows
-1. Install electron 7.1.14: First, replace `agora_electron` in `package.json` with the following code snippet:
-   ```
-   "agora_electron": {
-     "electron_version": "7.1.2",
-     "prebuilt": true,
-     "platform": "win32",
-     "arch": "ia32",
-   },
-   ```
-   Manually install electron 7.1.14
-   ```  
-   npm install electron@7.1.14 --arch=ia32 --save-dev
-   ```
-2. Install npm
-   ```
-   npm install
-   ```
+`yarn start:dev` or `npm run start:dev`
 
-3. Locally run the Electron demo
-   ```
-   npm run dev  
-   ```
-4. Release the Electron demo
-   ```
-   npm run dist:dir
-   ```
-After running, a `release` folder that contains an exe file will be generated. Open the exe file as administrator to install it.
+It's possible to use a different port by specifying this first like so: 
+
+`CVA_PORT=7788 yarn start:dev` to start with port 7788. Same for npm just include `CVA_PORT=7788` at the beginning.
+
+### Build for production
+
+`yarn build` or `npm run build`
+
+### Ways you may add to this
+
++ Add jsx and react - Or just use create react app instead!
++ Add a .env for project specific environment values
